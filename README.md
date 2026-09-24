@@ -18,3 +18,7 @@ x64sc -autostartprgmode 1 -autostart build/subway_3sid_v59.prg
 ```
 
 See `V5_9_0_NOTES.md` for the final timing, music, and effect design notes.
+
+## Live VICE capture
+
+![Running C64 Berlin Subway 3SID](assets/live-vice.png)
