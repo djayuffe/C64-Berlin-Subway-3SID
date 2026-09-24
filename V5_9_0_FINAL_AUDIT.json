@@ -1,0 +1,82 @@
+{
+  "version": "v5.9.0 final music/timing/effects lock",
+  "result": "PASS",
+  "music": {
+    "active_sections": [
+      2,
+      3
+    ],
+    "sequence": [
+      2,
+      3,
+      2,
+      3,
+      2,
+      3
+    ],
+    "rows_per_section": 64,
+    "frames_per_row": 7,
+    "first_irq": {
+      "frame": 0,
+      "section": 2,
+      "row": 0,
+      "beat_edge": true
+    },
+    "sid_layout": {
+      "SID1": "$d400 bass/sub/ghost",
+      "SID2": "$d420 arp/harmony/shimmer",
+      "SID3": "$d440 drums"
+    }
+  },
+  "timing": {
+    "single_row_increment": true,
+    "single_beat_increment": true,
+    "free_running_arp_removed": true,
+    "arp_phases": [
+      0,
+      2,
+      4
+    ],
+    "irq_pulse_decay": true,
+    "atomic_edge_snapshot": true
+  },
+  "effects": {
+    "duration_source": "PartBarsTbl",
+    "part_count": 28,
+    "bars_range": [
+      3,
+      4
+    ],
+    "fade_start_row_in_bar": 12,
+    "next_scene_row_in_bar": 0,
+    "simulations": {
+      "3": {
+        "startup": {
+          "fade_start_row": 44,
+          "next_scene_row": 48
+        },
+        "normal": {
+          "fade_start_row": 44,
+          "next_scene_row": 48
+        }
+      },
+      "4": {
+        "startup": {
+          "fade_start_row": 60,
+          "next_scene_row": 64
+        },
+        "normal": {
+          "fade_start_row": 60,
+          "next_scene_row": 64
+        }
+      }
+    },
+    "frame_countdown_removed_from_main": true
+  },
+  "static": {
+    "global_labels": 433,
+    "missing_direct_jsr_jmp": [],
+    "warnings": [],
+    "errors": []
+  }
+}
