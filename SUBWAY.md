@@ -1,18 +1,21 @@
-# BERLIN — a trip from the airport to the Golden Heart Hotel
+# Berlin Subway 3SID — journey concept
 
-A demo on the **same engine** as the U83R megademo (cloned from megademo.s),
-reworked into one continuous narrative: landing at Berlin's airport and riding
-the train across the city to the Golden Heart Hotel, scored end to end by
-evolving real techno.
+A C64 text-mode megademo that follows a continuous ride from Berlin airport to
+the Golden Heart Hotel. The experience is scored end to end by a three-SID
+Berlin A/B techno arrangement.
 
-## Same engine
-- src/subway.s is a clone of megademo.s — identical effect engine, digital-rain
-  inter-effect menu, banking, scroller, raster IRQ.  Content + music expanded.
+## Runtime model
 
-## 28 effects, longer run
-- 28 parts (was 24): added vortex, mux edge field, raster boot tunnel and the
-  neon wire cube.  Every part also runs ~40% longer — a ~4-minute trip.
-- Verified: no CPU jam across the full 28-part loop (2.5B cycles).
+`src/subway.s` owns the complete engine: VIC setup, one 50 Hz raster IRQ,
+three-SID music, effect dispatch, and bar-locked transitions. It is a
+standalone source file, not a build-time dependency on another project.
+
+## 28 effects
+
+The dispatch tables select 28 visual parts, including vortex, multiplexed edge
+field, raster-boot tunnel, and neon wire cube. Each part is scheduled for
+exactly three or four 16-row musical bars. See [docs/EFFECTS.md](docs/EFFECTS.md)
+for the routine-level inventory and verified VICE captures.
 
 ## Five evolving real-techno sections (the journey)
 - The music flows through 5 sections on each song loop (curSong cycles 2..6):
@@ -36,5 +39,6 @@ evolving real techno.
   express into the tunnel, the city rolling by underground, up the stairs into the
   night — with greet-stops at the key stations, ending at the Golden Heart Hotel.
 
-Build:  acme -f cbm -o build/subway.prg src/subway.s
-Run:    x64sc -autostartprgmode 1 -autostart build/subway.prg
+Build:  `acme -f cbm -o build/subway_3sid_v59.prg src/subway.s`
+
+Run:    `x64sc -autostartprgmode 1 -autostart build/subway_3sid_v59.prg`

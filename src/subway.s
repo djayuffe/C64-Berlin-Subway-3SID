@@ -1,24 +1,21 @@
 ; ============================================================================
-;  U83R RUL3Z - 3SID TIMING-LOCKED MEGADEMO   (C64 / ACME)
+;  BERLIN SUBWAY 3SID - TIMING-LOCKED C64 MEGADEMO   (C64 / ACME)
 ; ----------------------------------------------------------------------------
-;  Full sequenced production with 3SID audio: bass, melody and dedicated drums
-;  score and wipe + title-card transitions:
-;     PART 0  TITLE          - title screen with colour-cycling text
-;     PART 1  DIGITAL RAIN    - Matrix-style falling glyph columns
-;     PART 2  HORIZON WARP    - concentric colour-cycling rainbow rings
-;     PART 3  SINE STARFIELD  - parallax char starfield + glowing greets scroller
-;
-;  Sources integrated (re-implemented under one framework):
-;     matrix_rain_fixed_v2.s, horizonwarp_rings_baremetal.s,
-;     U83R demo.s (starfield + ticker), cracktro_strict_v7 (3SID-expanded engine)
+;  Full sequenced production with a three-SID score: bass/sub on SID1,
+;  harmony/shimmer on SID2, and dedicated drums on SID3.  Twenty-eight effects
+;  are selected through the InitTbl/UpdateTbl dispatch tables below. See
+;  docs/EFFECTS.md for the maintained visual inventory and capture gallery.
 ;
 ;  Unified layout: VIC bank 0, screen $0400, colour $d800, charset = ROM font
 ;  mirrored at $1000 (no copy needed), text mode.  A single raster IRQ at line
 ;  250 ticks the music at 50 Hz and raises a frame flag; the main loop renders
 ;  the active part and drives the part/transition state machine.
 ;
-;  Build:  acme -f cbm -o build/megademo.prg src/megademo.s
+;  Build:  acme -f cbm -o build/subway_3sid_v59.prg src/subway.s
 ;  Run:    LOAD"*",8,1 : SYS 2061     (or autostart)
+;
+;  Copyright (C) 2026 Ulf Bertilsson
+;  SPDX-License-Identifier: GPL-3.0-or-later
 ; ============================================================================
 
 !cpu 6502
@@ -137,7 +134,7 @@ SID3_FCLO  = SID3+$15
 SID3_FCHI  = SID3+$16
 SID3_RESFLT= SID3+$17
 SID3_MODEVOL=SID3+$18
-MUS_SPEED  = 6                      ; frames per pattern row
+MUS_SPEED  = 7                      ; locked fallback: frames per pattern row
 
 IRQ_LINE    = 250
 

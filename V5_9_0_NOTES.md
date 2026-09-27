@@ -18,6 +18,5 @@ Final implementation:
 Build:
 
 ```bash
-cd mega
 ./build_release.sh
 ```
